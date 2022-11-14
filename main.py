@@ -2,17 +2,17 @@ import sys
 
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QPainter, QColor
-from PyQt5 import uic
 from random import randrange
+from UI import Ui_Form
 
 
-class Form(QWidget):
+class Form(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
-        self.pushButton.clicked.connect(self.paint)
+        self.setupUi(self)
         self.do_paint = False
         self.setWindowTitle('Окружности')
+        self.pushButton.clicked.connect(self.paint)
 
     def paint(self):
         self.do_paint = True
@@ -26,7 +26,7 @@ class Form(QWidget):
             draw.end()
 
     def circles(self, draw):
-        draw.setBrush(QColor(255, 255, 0))
+        draw.setBrush(QColor(randrange(0, 256), randrange(0, 256), randrange(0, 256)))
         draw.drawEllipse(40, 60, randrange(10, 70), randrange(10, 70))
         draw.drawEllipse(200, 60, randrange(10, 70), randrange(10, 70))
         self.do_paint = False
