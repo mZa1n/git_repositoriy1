@@ -26,9 +26,10 @@ class Form(QWidget, Ui_Form):
             draw.end()
 
     def circles(self, draw):
+        rad = randrange(10, 100)
         draw.setBrush(QColor(randrange(0, 256), randrange(0, 256), randrange(0, 256)))
-        draw.drawEllipse(40, 60, randrange(10, 70), randrange(10, 70))
-        draw.drawEllipse(200, 60, randrange(10, 70), randrange(10, 70))
+        draw.drawEllipse(40, 60, rad, rad)
+        draw.drawEllipse(200, 60, rad, rad)
         self.do_paint = False
 
 
